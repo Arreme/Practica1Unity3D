@@ -34,6 +34,9 @@ public class FPSController : MonoBehaviour
     float _currPitch;
     float _gravity;
     float _jumpSpeed;
+
+    float _xMousePos = 0;
+    float _yMousePos = 0;
     void Awake()
     {
         _currYaw = transform.rotation.eulerAngles.y;
@@ -48,11 +51,12 @@ public class FPSController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        Rotate();
     }
 
     private void Update()
     {
-        Rotate();
+        InputRotate();
     }
 
     private void Move()
@@ -118,22 +122,26 @@ public class FPSController : MonoBehaviour
 
 
     }
-    private void Rotate()
+    private void InputRotate()
     {
         /*
          * Get the difference between frames of mouse position. Both axis. DO NOT
          * USE delta time after, you are already using frame specific results.
          */
-        float xMousePos = Input.GetAxis("Mouse X");
-        float yMousePos = Input.GetAxis("Mouse Y");
+        _xMousePos += Input.GetAxis("Mouse X");
+        _yMousePos += Input.GetAxis("Mouse Y");
+    }
+
+    private void Rotate()
+    {
 
         /*
          * Use the mouse variables to change the angles of our character.
          * If invert variables == true, then the result will be multiplied by -1
          * Clamp is to limit a number between a minimum and a maximum (avoids the WIIIIII effect)
          */
-        _currYaw += xMousePos * _yawSpeed * (_invertYaw ? -1 : 1);
-        _currPitch -= yMousePos * _pitchSpeed * (_invertPitch ? -1 : 1);
+        _currYaw += _xMousePos * _yawSpeed * (_invertYaw ? -1 : 1);
+        _currPitch -= _yMousePos * _pitchSpeed * (_invertPitch ? -1 : 1);
         _currPitch = Mathf.Clamp(_currPitch, _minPitch, _maxPitch);
 
         /*
@@ -142,6 +150,9 @@ public class FPSController : MonoBehaviour
          */
         transform.rotation = Quaternion.Euler(0.0f, _currYaw, 0.0f);
         _pitchController.transform.localRotation = Quaternion.Euler(_currPitch, 0, 0);
+
+        _xMousePos = 0;
+        _yMousePos = 0;
     }
 
     private void OnEnable()
