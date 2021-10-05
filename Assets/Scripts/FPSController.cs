@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {
-
+    [Header("Rotation")]
     [SerializeField] private float _yawSpeed;
     [SerializeField] private float _pitchSpeed;
     [SerializeField] private float _minPitch;
@@ -13,6 +13,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] private bool _invertPitch;
     [SerializeField] private bool _invertYaw;
 
+    [Header("Movement")]
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private KeyCode _frontKey;
@@ -34,6 +35,7 @@ public class FPSController : MonoBehaviour
     float _currPitch;
     float _gravity;
     float _jumpSpeed;
+    Vector3 _speed;
 
     float _xMousePos = 0;
     float _yMousePos = 0;
@@ -68,7 +70,7 @@ public class FPSController : MonoBehaviour
          */
         Vector3 forward = new Vector3(Mathf.Sin(_currYaw*Mathf.Deg2Rad), 0.0f ,Mathf.Cos(_currYaw*Mathf.Deg2Rad));
         Vector3 right = new Vector3(Mathf.Sin((_currYaw + 90.0f) * Mathf.Deg2Rad), 0.0f, Mathf.Cos((_currYaw + 90.0f) * Mathf.Deg2Rad));
-        Vector3 lMovement = new Vector3();
+        Vector3 force = new Vector3();
         
         /*
          * Get the front/back input. If going backwards magnitude is the same but with inverse direction
@@ -76,10 +78,10 @@ public class FPSController : MonoBehaviour
          */
         if(Input.GetKey(_frontKey))
         {
-            lMovement += forward;
+            force += forward;
         } else if (Input.GetKey(_backKey))
         {
-            lMovement -= forward;
+            force -= forward;
         }
 
         /*
@@ -87,10 +89,10 @@ public class FPSController : MonoBehaviour
          */
         if (Input.GetKey(_leftKey))
         {
-            lMovement -= right;
+            force -= right;
         } else if (Input.GetKey(_rightKey))
         {
-            lMovement += right;
+            force += right;
         }
 
         if (_onGround && Input.GetKey(_space)) _verticalSpeed = _jumpSpeed;
@@ -99,20 +101,21 @@ public class FPSController : MonoBehaviour
          * Make sure vector always has magnitude <= 1. If not, we could be going faster by going diagonally,
          * as magnitude of (1,0,1) is NOT 1.
          */
-        lMovement.Normalize();
+        force.Normalize();
 
         /*
          * lMovement is our direction. We can now multiply it by a scalar number to increase the magnitude,
          * and with that, the speed of our character.
          */
-        lMovement *= _moveSpeed * Time.fixedDeltaTime * (Input.GetKey(_shift) ? _runMultiplier : 1);
+        _speed += force * _moveSpeed * Time.fixedDeltaTime;
+        _speed *= 0.8f;
+        Vector3 fPos = _speed * 5 * Time.fixedDeltaTime;
 
         _verticalSpeed += _gravity * Time.fixedDeltaTime;
-
-        lMovement.y = _verticalSpeed * Time.fixedDeltaTime;
+        fPos.y = _verticalSpeed * Time.fixedDeltaTime;
 
         //Apply the movement of the vector to our character controller.
-        CollisionFlags colls = _characterController.Move(lMovement);
+        CollisionFlags colls = _characterController.Move(fPos);
 
         _onGround = (colls & CollisionFlags.Below) != 0;
         _onContactCeiling = (colls & CollisionFlags.Above) != 0;
