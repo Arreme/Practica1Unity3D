@@ -39,6 +39,15 @@ public class FPSController : MonoBehaviour
 
     float _xMousePos = 0;
     float _yMousePos = 0;
+
+    
+    //Fijar el ratón y que se quede invisible
+    public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
+    public KeyCode m_DebugLockKeyCode = KeyCode.O;
+
+    [SerializeField] bool m_AngleLocked = false;
+    [SerializeField] bool m_AimLocked = false; 
+
     void Awake()
     {
         _currYaw = transform.rotation.eulerAngles.y;
@@ -53,12 +62,26 @@ public class FPSController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        Rotate();
+        if(!m_AngleLocked)
+            Rotate();
     }
 
     private void Update()
     {
         InputRotate();
+
+        if (Input.GetKeyDown(m_DebugLockAngleKeyCode))
+            m_AngleLocked = !m_AngleLocked;
+        if (Input.GetKeyDown(m_DebugLockKeyCode))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+            m_AimLocked = Cursor.lockState == CursorLockMode.Locked;
+        }
+
+
     }
 
     private void Move()
@@ -158,13 +181,5 @@ public class FPSController : MonoBehaviour
         _yMousePos = 0;
     }
 
-    private void OnEnable()
-    {
-        Cursor.visible = false;
-    }
-
-    private void OnDisable()
-    {
-        Cursor.visible = true;
-    }
+ 
 }
