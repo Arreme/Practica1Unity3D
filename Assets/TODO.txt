@@ -1,0 +1,17 @@
+TODO's:
+
+1.- Environment: TOT
+2.- Moviment: Salt asimetric i altres cosetes
+3.- Bala amb raycasting i recoil d'arma
+4.- Arma semiautomatica
+5.- Portes
+ 5.1.- Con llave
+ 5.2.- Abre con puntuación
+ 5.3.- Se abre y cierra con sensor
+6.- Items dropeables
+7.- Dead Zones - Parets que es desplacen i te matan mas lava
+8.- Game Over retry
+9.- CheckPoint
+10.- Lifebar
+11.- Particules
+12.- Decals de impacte
