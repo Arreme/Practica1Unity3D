@@ -13,6 +13,7 @@ public class DestroyInSeconds : MonoBehaviour
 
     IEnumerator DestroyAfterTime()
     {
+
         yield return new WaitForSeconds(seconds);
         gameObject.SetActive(false);
     }
