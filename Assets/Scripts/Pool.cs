@@ -6,7 +6,7 @@ public class Pool : MonoBehaviour
 {
     [SerializeField] private GameObject objectToPool;
     private List<GameObject> pooledObjects;
-    [SerializeField] private int poolSize = 10;
+    [SerializeField] private int poolSize = 20;
 
     private void Start()
     {

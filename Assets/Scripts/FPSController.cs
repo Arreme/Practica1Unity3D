@@ -22,6 +22,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] private KeyCode _leftKey;
     [SerializeField] private KeyCode _shift;
     [SerializeField] private float _runMultiplier;
+    private bool _dashReady = true;
 
     [Header("Jump")]
     [SerializeField] private KeyCode _space;
@@ -34,6 +35,7 @@ public class FPSController : MonoBehaviour
     float _currYaw;
     float _currPitch;
     float _gravity;
+    float _startingGravity;
     float _jumpSpeed;
     Vector3 _speed;
 
@@ -53,11 +55,10 @@ public class FPSController : MonoBehaviour
         _currYaw = transform.rotation.eulerAngles.y;
         _currPitch = _pitchController.transform.rotation.eulerAngles.x;
 
-        _gravity = -2 * _height / (_timeToMaxHeight * _timeToMaxHeight);
+        _startingGravity = -2 * _height / (_timeToMaxHeight * _timeToMaxHeight);
+        _gravity = _startingGravity;
         _jumpSpeed = 2 * _height / _timeToMaxHeight;
     }
-
-    //TODO: Calcular els inputs en el update.
 
     void FixedUpdate()
     {
@@ -69,7 +70,12 @@ public class FPSController : MonoBehaviour
     private void Update()
     {
         InputRotate();
+        LockCursor();
 
+    }
+
+    private void LockCursor()
+    {
         if (Input.GetKeyDown(m_DebugLockAngleKeyCode))
             m_AngleLocked = !m_AngleLocked;
         if (Input.GetKeyDown(m_DebugLockKeyCode))
@@ -80,8 +86,6 @@ public class FPSController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             m_AimLocked = Cursor.lockState == CursorLockMode.Locked;
         }
-
-
     }
 
     private void Move()
@@ -118,7 +122,11 @@ public class FPSController : MonoBehaviour
             force += right;
         }
 
-        if (_onGround && Input.GetKey(_space)) _verticalSpeed = _jumpSpeed;
+        if (_onGround && Input.GetKey(_space))
+        {
+            _gravity = _startingGravity;
+            _verticalSpeed = _jumpSpeed;
+        }
 
         /*
          * Make sure vector always has magnitude <= 1. If not, we could be going faster by going diagonally,
@@ -131,6 +139,12 @@ public class FPSController : MonoBehaviour
          * and with that, the speed of our character.
          */
         _speed += force * _moveSpeed * Time.fixedDeltaTime;
+        if (Input.GetKey(_shift) && _dashReady)
+        {
+            _dashReady = false;
+            StartCoroutine(readyDash());
+            _speed *= 8;
+        }
         _speed *= 0.8f;
         Vector3 fPos = _speed * 5 * Time.fixedDeltaTime;
 
@@ -145,8 +159,18 @@ public class FPSController : MonoBehaviour
 
         if (_onGround) _verticalSpeed = 0.0f;
         if (_onContactCeiling && _verticalSpeed > 0.0f) _verticalSpeed = 0.0f;
+        if (_verticalSpeed < 0.0f)
+        {
+            _gravity = _startingGravity * 1.7f;
+        }
 
 
+    }
+
+    private IEnumerator readyDash()
+    {
+        yield return new WaitForSecondsRealtime(0.3f);
+        _dashReady = true;
     }
     private void InputRotate()
     {
