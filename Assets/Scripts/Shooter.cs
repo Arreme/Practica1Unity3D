@@ -1,20 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Shooter : MonoBehaviour
 {
-    [Header("ShootByInstantiation")]
-    [SerializeField] GameObject _bullet;
-    [SerializeField] Transform _spawner;
-    [SerializeField] float _speed;
-
-    [Header("shootByRaycast")]
-    [SerializeField] Camera _cam;
-    [SerializeField] float _maxDistance;
-    [SerializeField] LayerMask _shootingLayerMask;
-    [SerializeField] float zOffset;
+    [Header("Shooting")]
+    [SerializeField] private GameObject _bullet;
+    [SerializeField] private Transform _spawn;
+    [SerializeField] private float _speed;    
 
     [Header("Loading")]
     [SerializeField] private int _loadedBullets = 0;
@@ -23,12 +16,20 @@ public class Shooter : MonoBehaviour
     [SerializeField] private UnityEvent<int, int> ammoChanged;
 
     [SerializeField] private Pool _decalPool;
+    [SerializeField] private Animation _anim;
+
     private bool _gunActive;
     [SerializeField] private GunScriptableObject _currentGun;
     public GunScriptableObject CurrentGun
     {
         set { _currentGun = value; }
         get { return _currentGun; }
+    }
+
+    [SerializeField] private AudioManager _audioManager;
+    private enum ShootingAudios
+    {
+        SHOOT, NOBULLETS, RELOAD
     }
 
     private void Start()
@@ -45,13 +46,16 @@ public class Shooter : MonoBehaviour
             StartCoroutine(AttackSpeed());
             if (_loadedBullets > 0)
             {
-                shootByRaycast();
+                shootBullet();
                 _loadedBullets--;
                 ammoChanged.Invoke(_loadedBullets,_unloadedBullets);
+                _audioManager.playAudio((int)ShootingAudios.SHOOT);
+                _anim.Play("ShootPistol");
+
             } else
             {
                 //Cannot Shoot remember to recharge
-                Debug.Log("clac clac no balas me sad :(");
+                _audioManager.playAudio((int)ShootingAudios.NOBULLETS);
             }
             
         }
@@ -59,6 +63,7 @@ public class Shooter : MonoBehaviour
         {
             reloadingWeapon();
             ammoChanged.Invoke(_loadedBullets, _unloadedBullets);
+            _audioManager.playAudio((int)ShootingAudios.RELOAD);
         }
         
     }
@@ -71,21 +76,10 @@ public class Shooter : MonoBehaviour
         _loadedBullets += bulletsToRecharge;
     }
 
-    private void shootByInstantiation()
+    private void shootBullet()
     {
-        GameObject currbullet = Instantiate(_bullet, _spawner.position, _spawner.rotation);
-        currbullet.GetComponent<Rigidbody>().velocity = transform.forward * _speed;
-    }
-
-    private void shootByRaycast()
-    {
-        Ray r = _cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        RaycastHit hitInfo;
-        if (Physics.Raycast(r, out hitInfo, _maxDistance, _shootingLayerMask))
-        {
-            hitInfo.transform.gameObject.GetComponent<HealthSystem>()?.getHit(_currentGun._damage);
-            _decalPool.activateObject(hitInfo.point + hitInfo.normal * zOffset, Quaternion.LookRotation(-hitInfo.normal));
-        }
+        GameObject obj = _decalPool.bulletActivateObject(_spawn.transform.position, Quaternion.LookRotation(-transform.forward));
+        obj.GetComponent<Rigidbody>().velocity = transform.forward * _speed;
 
     }
 

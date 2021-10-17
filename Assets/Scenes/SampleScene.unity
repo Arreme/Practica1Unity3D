@@ -219,6 +219,151 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10460648}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &66274583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66274584}
+  - component: {fileID: 66274585}
+  - component: {fileID: 66274586}
+  m_Layer: 6
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &66274584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66274583}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.25999948, y: 0.27999973, z: 0.88999933}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 503934033}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &66274585
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66274583}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.25
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &66274586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66274583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0712ede17262b96499a9177e89da2112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioList:
+  - {fileID: 8300000, guid: 0fe44b2b73fec52409cc42069702f668, type: 3}
+  - {fileID: 8300000, guid: de389acd365634448b8b35e7bf9b8204, type: 3}
+  - {fileID: 8300000, guid: b2fc7560aec52d540a1a974cea701bcb, type: 3}
+  _source: {fileID: 66274585}
 --- !u!1 &111643264
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 503934033}
+  - component: {fileID: 503934034}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -571,9 +717,47 @@ Transform:
   - {fileID: 111643268}
   - {fileID: 1362926532}
   - {fileID: 927343950}
+  - {fileID: 66274584}
   m_Father: {fileID: 1913403349}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503934034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503934032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49b97d47d5e93d40ab9ca65b7d80eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bullet: {fileID: 8636430850280122599, guid: e4b7ee0d0d84ee74dbd960293532d8d9, type: 3}
+  _spawn: {fileID: 1362926532}
+  _speed: 60
+  _loadedBullets: 10
+  _unloadedBullets: 60
+  _reloadKey: 114
+  ammoChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 765748856}
+        m_TargetAssemblyTypeName: AmmoUI, Assembly-CSharp
+        m_MethodName: updateAmmo
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _decalPool: {fileID: 1494154862}
+  _anim: {fileID: 1913403350}
+  _currentGun: {fileID: 11400000, guid: c3ed17486604d7545a7725b8b9dd127b, type: 2}
+  _audioManager: {fileID: 66274586}
 --- !u!1 &697908312
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +940,6 @@ GameObject:
   - component: {fileID: 765748848}
   - component: {fileID: 765748853}
   - component: {fileID: 765748852}
-  - component: {fileID: 765748854}
   - component: {fileID: 765748855}
   - component: {fileID: 765748856}
   m_Layer: 6
@@ -881,6 +1064,7 @@ MonoBehaviour:
   m_DebugLockKeyCode: 111
   m_AngleLocked: 0
   m_AimLocked: 0
+  _anim: {fileID: 1913403350}
 --- !u!143 &765748853
 CharacterController:
   m_ObjectHideFlags: 0
@@ -899,47 +1083,6 @@ CharacterController:
   m_SkinWidth: 0.1
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.05, z: 0}
---- !u!114 &765748854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765748847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49b97d47d5e93d40ab9ca65b7d80eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bullet: {fileID: 8636430850280122599, guid: e4b7ee0d0d84ee74dbd960293532d8d9, type: 3}
-  _spawner: {fileID: 1362926532}
-  _speed: 50
-  _cam: {fileID: 963194227}
-  _maxDistance: 10
-  _shootingLayerMask:
-    serializedVersion: 2
-    m_Bits: 55
-  zOffset: 0.01
-  _loadedBullets: 10
-  _unloadedBullets: 60
-  _reloadKey: 114
-  ammoChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 765748856}
-        m_TargetAssemblyTypeName: AmmoUI, Assembly-CSharp
-        m_MethodName: updateAmmo
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _decalPool: {fileID: 1494154862}
-  _currentGun: {fileID: 11400000, guid: c3ed17486604d7545a7725b8b9dd127b, type: 2}
 --- !u!114 &765748855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,7 +1513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 0/0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -1662,7 +1805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362926531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25800034, y: 0.27999997, z: 1.5679997}
+  m_LocalPosition: {x: 0.258, y: 0.27999997, z: 1.412}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 503934033}
@@ -1680,7 +1823,7 @@ GameObject:
   - component: {fileID: 1415902673}
   - component: {fileID: 1415902675}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1875,7 +2018,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03c6269382fc314bb36ef5ee1035a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 8959523299690422474, guid: 2cf87b334629d324880348bc4e5e9de3, type: 3}
+  decalPool: {fileID: 8959523299690422474, guid: 2cf87b334629d324880348bc4e5e9de3, type: 3}
+  bulletsPool: {fileID: 8636430850280122599, guid: e4b7ee0d0d84ee74dbd960293532d8d9, type: 3}
   poolSize: 10
 --- !u!1 &1574415526
 GameObject:
@@ -2080,6 +2224,8 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 17d3bca05c7123c48aed3a74763e550b, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 17d3bca05c7123c48aed3a74763e550b, type: 2}
+  - {fileID: 7400000, guid: c3cf2aaf66a7f1b4cbf84260598bb881, type: 2}
+  - {fileID: 7400000, guid: d882dd27551e4b14f81a348199f17ff4, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -2141,7 +2287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 0/0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
