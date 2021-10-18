@@ -7,6 +7,7 @@ public class TargetHit : MonoBehaviour
 
     private Pool _decalPool;
     [SerializeField] private float zOffset;
+    [SerializeField] private float _despawn = 1f;
 
     public void setDecal(Pool _decal)
     {
@@ -18,5 +19,16 @@ public class TargetHit : MonoBehaviour
         ContactPoint hit = collision.contacts[0];
         _decalPool.decalActivateObject(hit.point + hit.normal * zOffset, Quaternion.LookRotation(-hit.normal));
         gameObject.SetActive(false);
+    }
+
+    public void activateCounter()
+    {
+        StartCoroutine(despawn());
+    }
+
+    private IEnumerator despawn()
+    {
+        yield return new WaitForSecondsRealtime(_despawn);
+        if (gameObject.activeInHierarchy) gameObject.SetActive(false);
     }
 }

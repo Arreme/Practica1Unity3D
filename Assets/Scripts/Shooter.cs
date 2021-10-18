@@ -80,6 +80,7 @@ public class Shooter : MonoBehaviour
     {
         GameObject obj = _decalPool.bulletActivateObject(_spawn.transform.position, Quaternion.LookRotation(-transform.forward));
         obj.GetComponent<Rigidbody>().velocity = transform.forward * _speed;
+        obj.GetComponent<Rigidbody>().useGravity = false;
 
     }
 

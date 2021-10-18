@@ -54,6 +54,7 @@ public class Pool : MonoBehaviour
             pulled.transform.position = pos;
             pulled.transform.rotation = orientation;
             pulled.SetActive(true);
+            pulled.GetComponent<TargetHit>().activateCounter();
             return pulled;
         }
         return null;
