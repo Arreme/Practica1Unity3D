@@ -2,8 +2,8 @@ TODO's:
 
 1.- Environment: TOT
 x - 2.- Moviment: Salt asimetric i altres cosetes
-3.- Bala amb raycasting i recoil d'arma
-4.- Arma semiautomatica
+x 3.- Bala amb raycasting i recoil d'arma
+x 4.- Arma semiautomatica
 5.- Portes
  5.1.- Con llave
  5.2.- Abre con puntuación
