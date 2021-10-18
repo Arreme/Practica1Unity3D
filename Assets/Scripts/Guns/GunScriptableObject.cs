@@ -8,4 +8,7 @@ public class GunScriptableObject : ScriptableObject
     public int _damage;
     public float _attckSpeed;
     public int _clipSize;
+
+    public float _recoilX;
+    public float _recoilY;
 }

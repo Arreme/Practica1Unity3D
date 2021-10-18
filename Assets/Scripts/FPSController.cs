@@ -42,7 +42,10 @@ public class FPSController : MonoBehaviour
     float _xMousePos = 0;
     float _yMousePos = 0;
 
-    
+    float _xRecoil = 0;
+    float _yRecoil = 0;
+
+
     //Fijar el ratón y que se quede invisible
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
@@ -178,7 +181,7 @@ public class FPSController : MonoBehaviour
 
     private IEnumerator readyDash()
     {
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.5f);
         _dashReady = true;
     }
     private void InputRotate()
@@ -189,6 +192,7 @@ public class FPSController : MonoBehaviour
          */
         _xMousePos += Input.GetAxis("Mouse X");
         _yMousePos += Input.GetAxis("Mouse Y");
+        
     }
 
     private void Rotate()
@@ -199,10 +203,12 @@ public class FPSController : MonoBehaviour
          * If invert variables == true, then the result will be multiplied by -1
          * Clamp is to limit a number between a minimum and a maximum (avoids the WIIIIII effect)
          */
-        _currYaw += _xMousePos * _yawSpeed * (_invertYaw ? -1 : 1);
-        _currPitch -= _yMousePos * _pitchSpeed * (_invertPitch ? -1 : 1);
+        _currYaw += (_xMousePos + _xRecoil) * _yawSpeed * (_invertYaw ? -1 : 1);
+        _currPitch -= (_yMousePos + _yRecoil) * _pitchSpeed * (_invertPitch ? -1 : 1);
         _currPitch = Mathf.Clamp(_currPitch, _minPitch, _maxPitch);
 
+        _xRecoil *= 0.6f;
+        _yRecoil *= 0.6f;
         /*
          * Set final yaw angle to our player character.
          * IMPORTANT: We set the pitch angle to our pitch controller INSTEAD of our character
@@ -212,6 +218,12 @@ public class FPSController : MonoBehaviour
 
         _xMousePos = 0;
         _yMousePos = 0;
+    }
+
+    public void giveRecoil(float x,float y)
+    {
+        _xRecoil += x;
+        _yRecoil += y;
     }
 
  

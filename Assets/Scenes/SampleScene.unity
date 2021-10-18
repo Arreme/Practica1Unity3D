@@ -459,7 +459,7 @@ Transform:
   - {fileID: 927343950}
   m_Father: {fileID: 503934033}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -4.278718, y: 0, z: 0}
 --- !u!1 &433550046
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +756,7 @@ MonoBehaviour:
         m_CallState: 2
   _decalPool: {fileID: 1494154862}
   _anim: {fileID: 1913403350}
+  _controller: {fileID: 765748852}
   _currentGun: {fileID: 11400000, guid: c3ed17486604d7545a7725b8b9dd127b, type: 2}
   _audioManager: {fileID: 66274586}
 --- !u!1 &697908312

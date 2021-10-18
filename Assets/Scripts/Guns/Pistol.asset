@@ -15,3 +15,5 @@ MonoBehaviour:
   _damage: 10
   _attckSpeed: 0.7
   _clipSize: 6
+  _recoilX: 0.1
+  _recoilY: 0.2

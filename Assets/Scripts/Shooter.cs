@@ -18,7 +18,9 @@ public class Shooter : MonoBehaviour
     [SerializeField] private Pool _decalPool;
     [SerializeField] private Animation _anim;
 
+
     private bool _gunActive;
+    [SerializeField] private FPSController _controller;
     [SerializeField] private GunScriptableObject _currentGun;
     public GunScriptableObject CurrentGun
     {
@@ -51,6 +53,7 @@ public class Shooter : MonoBehaviour
                 ammoChanged.Invoke(_loadedBullets,_unloadedBullets);
                 _audioManager.playAudio((int)ShootingAudios.SHOOT);
                 _anim.Play("ShootPistol");
+                _controller.giveRecoil(Random.Range(-_currentGun._recoilX, _currentGun._recoilX),_currentGun._recoilY);
 
             } else
             {
