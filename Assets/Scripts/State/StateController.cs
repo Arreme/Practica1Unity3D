@@ -10,6 +10,7 @@ public class StateController : MonoBehaviour
     I_State _currState;
     public S_Idle _idleState = new S_Idle();
     public S_Patrol _patrolState = new S_Patrol();
+    [SerializeField] public Transform[] _targetData; 
     public NavMeshAgent _navMesh; 
 
 
