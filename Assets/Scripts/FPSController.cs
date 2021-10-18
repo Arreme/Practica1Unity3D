@@ -48,7 +48,9 @@ public class FPSController : MonoBehaviour
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
 
     [SerializeField] bool m_AngleLocked = false;
-    [SerializeField] bool m_AimLocked = false; 
+    [SerializeField] bool m_AimLocked = false;
+
+    [SerializeField] private Animation _anim;
 
     void Awake()
     {
@@ -139,6 +141,13 @@ public class FPSController : MonoBehaviour
          * and with that, the speed of our character.
          */
         _speed += force * _moveSpeed * Time.fixedDeltaTime;
+        if (!_anim.IsPlaying("ShootPistol"))
+        {
+            if (force.magnitude < 0.1) _anim.CrossFade("Idle");
+            else _anim.CrossFade("Walking");
+        }
+        
+
         if (Input.GetKey(_shift) && _dashReady)
         {
             _dashReady = false;
