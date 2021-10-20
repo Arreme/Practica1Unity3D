@@ -8,14 +8,14 @@ x 4.- Arma semiautomatica
  5.1.- Con llave
  5.2.- Abre con puntuación
  5.3.- Se abre y cierra con sensor
-6.- Items dropeables
+x 6.- Items dropeables
 7.- IA
 8.- Enemies
 9.- Dead Zones - Parets que es desplacen i te matan mas lava
-10.- Game Over retry
+casi 10.- Game Over retry
 11.- CheckPoint
-12.- Lifebar
+x 12.- Lifebar
 13.- Particules
 x - 14.- Decals de impacte
-15.- HUD
-16.- Vida i escut
+x 15.- HUD
+x 16.- Vida i escut

@@ -12,6 +12,7 @@ public class Shooter : MonoBehaviour
     [Header("Loading")]
     [SerializeField] private int _loadedBullets = 0;
     [SerializeField] private int _unloadedBullets = 60;
+    [SerializeField] private int _maxLoadedBullets = 120;
     [SerializeField] private KeyCode _reloadKey = KeyCode.R;
     [SerializeField] private UnityEvent<int, int> ammoChanged;
 
@@ -91,5 +92,14 @@ public class Shooter : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(_currentGun._attckSpeed);
         _gunActive = true;
+    }
+
+    public bool giveAmmo(int value)
+    {
+        if (_unloadedBullets == _maxLoadedBullets) return false;
+        _unloadedBullets += value;
+        _unloadedBullets = _unloadedBullets > _maxLoadedBullets ? _maxLoadedBullets : _unloadedBullets;
+        ammoChanged.Invoke(_loadedBullets, _unloadedBullets);
+        return true;
     }
 }
