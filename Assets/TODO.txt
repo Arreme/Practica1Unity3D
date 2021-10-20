@@ -12,8 +12,8 @@ x 6.- Items dropeables
 7.- IA
 8.- Enemies
 9.- Dead Zones - Parets que es desplacen i te matan mas lava
-casi 10.- Game Over retry
-11.- CheckPoint
+x 10.- Game Over retry
+x 11.- CheckPoint
 x 12.- Lifebar
 13.- Particules
 x - 14.- Decals de impacte
