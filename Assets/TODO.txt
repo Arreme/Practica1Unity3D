@@ -6,12 +6,12 @@ x 3.- Bala amb raycasting i recoil d'arma
 x 4.- Arma semiautomatica
 5.- Portes
  5.1.- Con llave
- 5.2.- Abre con puntuación
+ x 5.2.- Abre con puntuación
  5.3.- Se abre y cierra con sensor
 x 6.- Items dropeables
 7.- IA
 8.- Enemies
-9.- Dead Zones - Parets que es desplacen i te matan mas lava
+x 9.- Dead Zones - Parets que es desplacen i te matan mas lava
 x 10.- Game Over retry
 x 11.- CheckPoint
 x 12.- Lifebar

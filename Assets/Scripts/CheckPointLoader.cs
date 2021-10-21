@@ -9,7 +9,7 @@ public class CheckPointLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StData.tryUpdateCheckPoint(_nCheckPoint);
+            StData.CurrentCheckpoint = _nCheckPoint;
         }
     }
 }

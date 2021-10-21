@@ -6,7 +6,7 @@ public class RetyButton : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Insert))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             S_GameManager._gameManager.RestartGame();
         }

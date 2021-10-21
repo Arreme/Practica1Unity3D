@@ -21,6 +21,11 @@ public class TargetHit : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        other.GetComponent<Interaction>()?.runInteraction();
+    }
+
     public void activateCounter()
     {
         StartCoroutine(despawn());

@@ -45,8 +45,8 @@ public class S_GameManager : MonoBehaviour
     {
         if (_move)
         {
-            _player.transform.position = _checkPoints[StData._currentCheckPoint].position;
-            _player.transform.rotation = _checkPoints[StData._currentCheckPoint].rotation;
+            _player.transform.position = _checkPoints[StData.CurrentCheckpoint].position;
+            _player.transform.rotation = _checkPoints[StData.CurrentCheckpoint].rotation;
             _move = false;
         }
     }
