@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 19380202}
   - component: {fileID: 19380204}
   - component: {fileID: 19380203}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CheckPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 24186891}
   - component: {fileID: 24186893}
   - component: {fileID: 24186892}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 8636430850280122599, guid: e4b7ee0d0d84ee74dbd960293532d8d9, type: 3}
   _spawn: {fileID: 1362926532}
-  _speed: 70
+  _speed: 55
   _loadedBullets: 10
   _unloadedBullets: 60
   _maxLoadedBullets: 120
@@ -1511,7 +1511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 732337598}
   - component: {fileID: 732337599}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CheckPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4135,7 +4135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1818090174}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CheckPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4647,7 +4647,7 @@ GameObject:
   - component: {fileID: 2104358202}
   - component: {fileID: 2104358204}
   - component: {fileID: 2104358203}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CheckPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

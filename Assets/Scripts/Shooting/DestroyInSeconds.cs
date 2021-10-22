@@ -17,4 +17,15 @@ public class DestroyInSeconds : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         gameObject.SetActive(false);
     }
+
+    private void OnDisable()
+    {
+        Invoke("UnAttach", 0.1f);
+    }
+
+    private void UnAttach()
+    {
+        transform.parent = null;
+        gameObject.SetActive(false);
+    }
 }

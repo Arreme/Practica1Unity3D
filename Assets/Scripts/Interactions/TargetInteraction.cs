@@ -8,7 +8,7 @@ public class TargetInteraction : Interaction
     public override void runInteraction()
     {
         StData.CurrentPuntuation += _points;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

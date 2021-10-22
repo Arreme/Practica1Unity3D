@@ -67,7 +67,7 @@ MonoBehaviour:
   _despawn: 1
   _layer:
     serializedVersion: 2
-    m_Bits: 191
+    m_Bits: 183
 --- !u!135 &4383558820225248937
 SphereCollider:
   m_ObjectHideFlags: 0
