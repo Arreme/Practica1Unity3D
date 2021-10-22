@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 8636430850280122599, guid: e4b7ee0d0d84ee74dbd960293532d8d9, type: 3}
   _spawn: {fileID: 1362926532}
-  _speed: 50
+  _speed: 70
   _loadedBullets: 10
   _unloadedBullets: 60
   _maxLoadedBullets: 120
@@ -3344,7 +3344,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -5120,6 +5120,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 822551479178525914, guid: 9e673c0b4d97c874da49b8fdf57ae5d3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822551479775344627, guid: 9e673c0b4d97c874da49b8fdf57ae5d3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 822551479866373150, guid: 9e673c0b4d97c874da49b8fdf57ae5d3, type: 3}
       propertyPath: m_Name
       value: ScareCrow

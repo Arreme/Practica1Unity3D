@@ -37,6 +37,7 @@ public class Pool : MonoBehaviour
             pulled.transform.position = pos;
             pulled.transform.rotation = orientation;
             pulled.SetActive(true);
+            return pulled;
         }
         return null;
     }

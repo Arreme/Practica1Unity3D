@@ -6,24 +6,27 @@ public class TargetHit : MonoBehaviour
 {
 
     private Pool _decalPool;
+    [SerializeField] private float _distance = 5f;
     [SerializeField] private float zOffset;
     [SerializeField] private float _despawn = 1f;
+    [SerializeField] private LayerMask _layer;
 
     public void setDecal(Pool _decal)
     {
         _decalPool = _decal;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Update()
     {
-        ContactPoint hit = collision.contacts[0];
-        _decalPool.decalActivateObject(hit.point + hit.normal * zOffset, Quaternion.LookRotation(-hit.normal));
-        gameObject.SetActive(false);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        other.GetComponent<Interaction>()?.runInteraction();
+        RaycastHit info;
+        if (Physics.Raycast(new Ray(transform.position, -transform.forward),out info,_distance,_layer))
+        {
+            Debug.Log("Hey");
+            info.transform.GetComponent<Interaction>()?.runInteraction();
+            GameObject decal = _decalPool.decalActivateObject(info.point + info.normal * zOffset, Quaternion.LookRotation(-info.normal));
+            decal.transform.parent = info.transform;
+            gameObject.SetActive(false);
+        }
     }
 
     public void activateCounter()
@@ -36,4 +39,6 @@ public class TargetHit : MonoBehaviour
         yield return new WaitForSecondsRealtime(_despawn);
         if (gameObject.activeInHierarchy) gameObject.SetActive(false);
     }
+
+    
 }
