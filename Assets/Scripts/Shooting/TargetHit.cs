@@ -21,7 +21,6 @@ public class TargetHit : MonoBehaviour
         RaycastHit info;
         if (Physics.Raycast(new Ray(transform.position, -transform.forward),out info,_distance,_layer))
         {
-            Debug.Log("Hey");
             info.transform.GetComponent<Interaction>()?.runInteraction();
             GameObject decal = _decalPool.decalActivateObject(info.point + info.normal * zOffset, Quaternion.LookRotation(-info.normal));
             decal.transform.parent = info.transform;

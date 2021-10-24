@@ -14,8 +14,20 @@ public class EnemyStateAttackChase : MonoBehaviour
         _navMesh.destination = _target.position;
     }
 
-    public void TriggerEnterEvent(Collider other)
+    public void TriggerEnterExitEvent(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            _inRange = !_inRange;
+            _navMesh.isStopped = _inRange;
+        }
         
+        //run animation
+        //activate colliderobj
+    }
+
+    public void TriggerEnterAttackEvent(Collider other)
+    {
+        other.GetComponent<PlayerHealthSysem>()?.getHit();
     }
 }

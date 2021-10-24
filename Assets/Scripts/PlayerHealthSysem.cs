@@ -21,7 +21,6 @@ public class PlayerHealthSysem : MonoBehaviour
         if (_shield > 0)
         {
             _shield -= 75;
-            Debug.Log(_shield);
             _shield = _shield < 0 ? 0 : _shield;
             _shieldEvent.Invoke(_shield);
         } else
