@@ -1285,6 +1285,7 @@ MonoBehaviour:
   _decalPool: {fileID: 1494154862}
   _anim: {fileID: 1913403350}
   _controller: {fileID: 765748852}
+  _initialGun: {fileID: 11400000, guid: c3ed17486604d7545a7725b8b9dd127b, type: 2}
   _audioManager: {fileID: 66274586}
 --- !u!1 &525990002
 GameObject:
