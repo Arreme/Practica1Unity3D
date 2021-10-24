@@ -7,6 +7,7 @@ public class EnemyStateAlert : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navMesh;
     [SerializeField] private Transform _player;
+    [SerializeField] private MonoBehaviour _nextState;
 
     [SerializeField] private float _distance = 10;
     [SerializeField] private LayerMask _layerMask;
@@ -22,7 +23,8 @@ public class EnemyStateAlert : MonoBehaviour
                 float angle = Vector3.Angle(transform.forward, _direction);
                 if (angle <= 80)
                 {
-                    Debug.Log("Found!");
+                    _nextState.enabled = true;
+                    enabled = false;
                 }
             }
             
@@ -32,11 +34,6 @@ public class EnemyStateAlert : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(Alerted());
-    }
-
-    private void OnDrawGizmos()
-    {
-        Debug.DrawRay(transform.position,_player.position - transform.position);
     }
     private IEnumerator Alerted()
     {

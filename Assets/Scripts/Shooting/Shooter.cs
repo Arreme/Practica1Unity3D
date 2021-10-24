@@ -22,7 +22,8 @@ public class Shooter : MonoBehaviour
 
     private bool _gunActive;
     [SerializeField] private FPSController _controller;
-    [SerializeField] private static GunScriptableObject _currentGun;
+    [SerializeField] private GunScriptableObject _initialGun;
+    private static GunScriptableObject _currentGun;
     public static GunScriptableObject CurrentGun
     {
         set { _currentGun = value; }
@@ -33,6 +34,10 @@ public class Shooter : MonoBehaviour
     private enum ShootingAudios
     {
         SHOOT, NOBULLETS, RELOAD
+    }
+    private void Awake()
+    {
+        _currentGun = _initialGun;
     }
 
     private void Start()
