@@ -15,7 +15,7 @@ x 9.- Dead Zones - Parets que es desplacen i te matan mas lava
 x 10.- Game Over retry
 x 11.- CheckPoint
 x 12.- Lifebar
-13.- Particules
+NO 13.- Particules
 x - 14.- Decals de impacte
 x 15.- HUD
 x 16.- Vida i escut

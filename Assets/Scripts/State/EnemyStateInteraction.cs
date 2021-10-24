@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class EnemyStateInteraction : Interaction
 {
     [SerializeField] private float _life = 50;
@@ -9,10 +9,17 @@ public class EnemyStateInteraction : Interaction
 
     [SerializeField] private MonoBehaviour[] _allStates;
     [SerializeField] private Animation _anim;
+
+    private NavMeshAgent _navMesh;
+    private void Awake()
+    {
+        _navMesh = GetComponent<NavMeshAgent>();
+    }
+
     public override void runInteraction()
     {
-        Debug.Log("A me diste");
-        _chaseState.enabled = false;
+        _navMesh.isStopped = true;
+        _chaseState.enabled = true;
         foreach (MonoBehaviour mono in _allStates) mono.enabled = false;
         _life -= Shooter.CurrentGun._damage;
         if (_life <= 0)
@@ -20,7 +27,7 @@ public class EnemyStateInteraction : Interaction
             gameObject.SetActive(false);
         } else
         {
-            _anim.Play("DamageEnemy");
+            _anim.CrossFade("DamageEnemy");
             StartCoroutine(waitForChase());
         }
     }
@@ -28,7 +35,7 @@ public class EnemyStateInteraction : Interaction
     private IEnumerator waitForChase()
     {
         yield return new WaitForSeconds(1f);
-        _chaseState.enabled = true;
+        _navMesh.isStopped = false;
     }
 
 }

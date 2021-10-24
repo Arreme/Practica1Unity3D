@@ -10,7 +10,6 @@ public class DetectionDoor : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Hola");
             _animation.Play("OpenDoor");
         }
         

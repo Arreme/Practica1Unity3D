@@ -7,11 +7,22 @@ public class EnemyStateAttackChase : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navMesh;
     [SerializeField] private Transform _target;
-
+    private Animation _anim;
     private bool _inRange = false;
+    private bool _canAttack = true;
+    private void Awake()
+    {
+        _anim = GetComponent<Animation>();
+    }
+
     private void Update()
     {
         _navMesh.destination = _target.position;
+        if (_inRange && _canAttack)
+        {
+            StartCoroutine(attackCooldown());
+            _anim.CrossFade("AttackEnemy");
+        }
     }
 
     public void TriggerEnterExitEvent(Collider other)
@@ -21,9 +32,6 @@ public class EnemyStateAttackChase : MonoBehaviour
             _inRange = !_inRange;
             _navMesh.isStopped = _inRange;
         }
-        
-        //run animation
-        //activate colliderobj
     }
 
     public void TriggerEnterAttackEvent(Collider other)
@@ -31,13 +39,10 @@ public class EnemyStateAttackChase : MonoBehaviour
         other.GetComponent<PlayerHealthSysem>()?.getHit();
     }
 
-    private void OnDisable()
+    private IEnumerator attackCooldown()
     {
-        _navMesh.isStopped = true;
-    }
-
-    private void OnEnable()
-    {
-        _navMesh.isStopped = false;
+        _canAttack = false;
+        yield return new WaitForSeconds(1f);
+        _canAttack = true;
     }
 }
