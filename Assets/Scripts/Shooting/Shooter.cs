@@ -22,8 +22,8 @@ public class Shooter : MonoBehaviour
 
     private bool _gunActive;
     [SerializeField] private FPSController _controller;
-    [SerializeField] private GunScriptableObject _currentGun;
-    public GunScriptableObject CurrentGun
+    [SerializeField] private static GunScriptableObject _currentGun;
+    public static GunScriptableObject CurrentGun
     {
         set { _currentGun = value; }
         get { return _currentGun; }
