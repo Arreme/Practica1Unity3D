@@ -10,6 +10,8 @@ public class EnemyStateInteraction : Interaction
     [SerializeField] private MonoBehaviour[] _allStates;
     [SerializeField] private Animation _anim;
 
+    [SerializeField] private GameObject[] _items;
+
     private NavMeshAgent _navMesh;
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class EnemyStateInteraction : Interaction
         _life -= Shooter.CurrentGun._damage;
         if (_life <= 0)
         {
+            GameObject go = Instantiate(_items[Random.Range(0,3)],transform.position,transform.rotation);
             gameObject.SetActive(false);
         } else
         {
