@@ -30,4 +30,14 @@ public class EnemyStateAttackChase : MonoBehaviour
     {
         other.GetComponent<PlayerHealthSysem>()?.getHit();
     }
+
+    private void OnDisable()
+    {
+        _navMesh.isStopped = true;
+    }
+
+    private void OnEnable()
+    {
+        _navMesh.isStopped = false;
+    }
 }
