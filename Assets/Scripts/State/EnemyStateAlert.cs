@@ -8,6 +8,7 @@ public class EnemyStateAlert : MonoBehaviour
     [SerializeField] private NavMeshAgent _navMesh;
     [SerializeField] private Transform _player;
     [SerializeField] private MonoBehaviour _nextState;
+    [SerializeField] private MonoBehaviour _patrolState;
 
     [SerializeField] private float _distance = 10;
     [SerializeField] private LayerMask _layerMask;
@@ -23,6 +24,7 @@ public class EnemyStateAlert : MonoBehaviour
                 float angle = Vector3.Angle(transform.forward, _direction);
                 if (angle <= 80)
                 {
+                    StopCoroutine(Alerted());
                     _nextState.enabled = true;
                     enabled = false;
                 }
@@ -37,8 +39,10 @@ public class EnemyStateAlert : MonoBehaviour
     }
     private IEnumerator Alerted()
     {
-        //HUH
         yield return new WaitForSeconds(1f);
         _navMesh.destination = _player.position;
+        yield return new WaitForSeconds(7f);
+        _patrolState.enabled = true;
+        enabled = false;
     }
 }

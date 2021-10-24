@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class HealthItem : MonoBehaviour
 {
-    [SerializeField] private float _shield;
+    [SerializeField] private float _health;
     private void OnTriggerEnter(Collider other)
     {
         PlayerHealthSysem healthSystem;
         if (other.TryGetComponent(out healthSystem)) {
-            if (healthSystem.giveShield(_shield))
+            if (healthSystem.giveHealth(_health))
             {
                 Destroy(gameObject);
             }

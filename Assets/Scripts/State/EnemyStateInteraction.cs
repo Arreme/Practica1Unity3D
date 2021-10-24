@@ -41,4 +41,8 @@ public class EnemyStateInteraction : Interaction
         _navMesh.isStopped = false;
     }
 
+    private void OnDisable()
+    {
+        Destroy(gameObject, 1);
+    }
 }
