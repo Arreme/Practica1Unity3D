@@ -11,7 +11,6 @@ public class DoorWithKey : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(StData.CurrentKeys);
             if (StData.CurrentKeys >= 1)
             {
                 StData.CurrentKeys--;
