@@ -6806,6 +6806,7 @@ MonoBehaviour:
   _speed: 60
   _loadedBullets: 10
   _unloadedBullets: 60
+  _maxLoadedBullets: 120
   _reloadKey: 114
   ammoChanged:
     m_PersistentCalls:
@@ -9788,6 +9789,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  _shield: 0
+  _healthEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _shieldEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _shooter: {fileID: 0}
 --- !u!114 &765748856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9802,6 +9811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1193709679}
   text2: {fileID: 1976450173}
+  _health: {fileID: 0}
+  _shield: {fileID: 0}
 --- !u!4 &768725926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c44ac9581d531a94a886593c468b6332, type: 3}
@@ -27023,7 +27034,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e067ea6bad730c42af51845a1a13688, type: 2}
+  - {fileID: 2100000, guid: 81368c2a9de920a49a4b8eb69c1f0590, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
