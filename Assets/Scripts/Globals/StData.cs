@@ -22,4 +22,12 @@ public static class StData
     {
         _currentCheckPoint = 0;
     }
+
+
+    private static int _currentKeys = 0; 
+    public static int CurrentKeys
+    {
+        get { return _currentKeys; }
+        set { _currentKeys = value; }
+    }
 }
